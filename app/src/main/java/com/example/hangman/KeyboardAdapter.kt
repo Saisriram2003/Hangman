@@ -8,7 +8,7 @@ import com.example.hangman.databinding.ListItemKeyBinding
 
 class KeyboardHolder(private val binding: ListItemKeyBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(key: Key) {
-        binding.key.text = key.toString()
+        binding.key.text = key.letter.toString()
 
         if (key.isAvailable) {
             binding.keyBackground.setBackgroundResource(R.drawable.character_key_available)
