@@ -1,44 +1,437 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/text_color"
     tools:context=".MainActivity">
 
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/hangmanView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/move0"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Word"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/keyboard_fr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hangmanView"
+        tools:text="_ _ _ _ _ _" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/keyboard_fr"
         android:layout_width="343dp"
         android:layout_height="279dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="471dp"
         android:clipToOutline="true"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="30dp"
         >
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
+            android:id="@+id/charA"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <View
-                android:id="@+id/key_background"
+                android:id="@+id/key_background_A"
                 android:layout_width="35dp"
                 android:layout_height="43dp"
                 android:background="@drawable/character_key" />
 
             <TextView
-                android:id="@+id/key_text"
+                android:id="@+id/charAtext"
                 android:layout_width="18dp"
                 android:layout_height="36dp"
                 android:layout_centerInParent="true"
                 android:gravity="center"
+                android:text="A"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/text_color"
-                android:text="A"/>
+                android:textColor="@color/text_color" />
 
         </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/charB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/charA"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+            <View
+                android:id="@+id/key_background_B"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/charBtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="B"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+
+        </RelativeLayout>
+        <!-- Character 'C' -->
+        <RelativeLayout
+            android:id="@+id/charC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/charB"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/key_background_C"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charCtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="C"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'D' -->
+        <RelativeLayout
+            android:id="@+id/charD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/charC"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/key_background_D"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charDtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="D"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'E' -->
+        <RelativeLayout
+            android:id="@+id/charE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/charD"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/key_background_E"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charEtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="E"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'F' -->
+        <RelativeLayout
+            android:id="@+id/charF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/charE"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/key_background_F"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charFtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="F"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'G' -->
+        <RelativeLayout
+            android:id="@+id/charG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toEndOf="@id/charF"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/key_background_G"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charGtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="G"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+        <!-- Character 'H' -->
+        <RelativeLayout
+            android:id="@+id/charH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/charA">
+
+            <View
+                android:id="@+id/key_background_H"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charHtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="H"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'I' -->
+        <RelativeLayout
+            android:id="@+id/charI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/charH"
+            app:layout_constraintTop_toBottomOf="@id/charB">
+
+            <View
+                android:id="@+id/key_background_I"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charItext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="I"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'J' -->
+        <RelativeLayout
+            android:id="@+id/charJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/charI"
+            app:layout_constraintTop_toBottomOf="@id/charC">
+
+            <View
+                android:id="@+id/key_background_J"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charJtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="J"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'K' -->
+        <RelativeLayout
+            android:id="@+id/charK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/charJ"
+            app:layout_constraintTop_toBottomOf="@id/charD">
+
+            <View
+                android:id="@+id/key_background_K"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charKtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="K"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'L' -->
+        <RelativeLayout
+            android:id="@+id/charL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/charK"
+            app:layout_constraintTop_toBottomOf="@id/charE">
+
+            <View
+                android:id="@+id/key_background_L"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+            <TextView
+                android:id="@+id/charLtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="L"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'M' -->
+        <RelativeLayout
+            android:id="@+id/charM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/charL"
+            app:layout_constraintTop_toBottomOf="@id/charF">
+
+            <View
+                android:id="@+id/key_background_M"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charMtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="M"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+        <!-- Character 'N' -->
+        <RelativeLayout
+            android:id="@+id/charN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/charM"
+            app:layout_constraintTop_toBottomOf="@id/charG">
+
+            <View
+                android:id="@+id/key_background_N"
+                android:layout_width="35dp"
+                android:layout_height="43dp"
+                android:background="@drawable/character_key" />
+
+            <TextView
+                android:id="@+id/charNtext"
+                android:layout_width="18dp"
+                android:layout_height="36dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="N"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/text_color" />
+        </RelativeLayout>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
