@@ -32,7 +32,7 @@ class KeyboardFragment : Fragment() {
 
         binding.keyboardRecyclerView.layoutManager = GridLayoutManager(context, 7)
 
-        val keyboard = keyboardViewModel.letters
+        val keyboard = keyboardViewModel.keys
         val adapter = KeyboardAdapter(keyboard)
         binding.keyboardRecyclerView.adapter = adapter
 

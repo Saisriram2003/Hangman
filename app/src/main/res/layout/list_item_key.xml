@@ -8,7 +8,7 @@
         android:id="@+id/key_background"
         android:layout_width="35dp"
         android:layout_height="43dp"
-        android:background="@drawable/character_key" />
+        android:background="@drawable/character_key_available" />
 
     <TextView
         android:id="@+id/key"
@@ -16,8 +16,8 @@
         android:layout_height="36dp"
         android:layout_centerInParent="true"
         android:gravity="center"
+        android:text="A"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/text_color"
-        android:text="A" />
+        android:textColor="@color/text_color" />
 
 </RelativeLayout>
