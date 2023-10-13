@@ -19,6 +19,8 @@ class KeyboardHolder(private val binding: ListItemKeyBinding) : RecyclerView.Vie
         binding.root.setOnClickListener {
             // TODO: implement character key press
             Toast.makeText(binding.root.context, "$key pressed!", Toast.LENGTH_SHORT).show()
+            key.isAvailable = false
+            binding.keyBackground.setBackgroundResource(R.drawable.character_key_unavailable)
         }
     }
 }
