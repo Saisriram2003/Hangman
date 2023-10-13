@@ -19,16 +19,16 @@
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <TextView
+        android:id="@+id/guessedWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Word"
         android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/keyboard_fr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hangmanView"
-        tools:text="_ _ _ _ _ _" />
+        android:text="_ _ _ _ _ _" />
 
 
 
