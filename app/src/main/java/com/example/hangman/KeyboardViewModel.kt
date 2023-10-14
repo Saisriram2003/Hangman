@@ -9,7 +9,7 @@ class KeyboardViewModel : ViewModel() {
     init {
         for (i in 0 until 26) {
             val letter = 'A' + i
-            keys += Key(letter, false)
+            keys += Key(letter, true)
         }
     }
 }
