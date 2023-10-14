@@ -1,7 +1,13 @@
 package com.example.hangman
 
+import android.inputmethodservice.Keyboard
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hangman.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -11,12 +17,35 @@ class MainActivity : AppCompatActivity() {
     private lateinit var currentGuessedWord : String
     private var numTries = 0
     private var maxTries = 6
+    private val keyboardViewModel: KeyboardViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (keyboardViewModel.keys.isEmpty()){
+            generateKeys()
+        }
+
+        val adapter = KeyboardAdapter( keyboardViewModel.keys ){key ->
+            key.isAvailable = false
+            Toast.makeText(this, key.letter.toString(), Toast.LENGTH_SHORT).show()
+        }
+        binding.keyboardRv?.adapter = adapter
+        binding.keyboardRv?.setHasFixedSize(true)
+        binding.keyboardRv?.layoutManager = GridLayoutManager(this, 7)
+
         generateNewGame()
+    }
+
+    fun generateKeys(){
+        var keys = mutableListOf<Key>()
+        for (i in 0 until 26) {
+            val letter = 'A' + i
+            keys += Key(letter, true)
+        }
+        keyboardViewModel.keys = keys
     }
 
     fun generateNewGame(){

@@ -29,16 +29,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/keyboard_fr"
-        layout="@layout/container_keyboard"
-        android:layout_width="551dp"
-        android:layout_height="263dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/keyboard_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/hangmanView"
-        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guessedWord" />
+        app:layout_constraintTop_toBottomOf="@id/guessedWord"
+
+        ></androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

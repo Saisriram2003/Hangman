@@ -1,15 +1,14 @@
 package com.example.hangman
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
-class KeyboardViewModel : ViewModel() {
 
-    val keys = mutableListOf<Key>()
+const val KEYS = "Keys"
 
-    init {
-        for (i in 0 until 26) {
-            val letter = 'A' + i
-            keys += Key(letter, true)
-        }
-    }
+class KeyboardViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+
+    var keys : List<Key> get() = savedStateHandle.get(KEYS) ?: listOf()
+        set(value) = savedStateHandle.set(KEYS, value)
+
 }

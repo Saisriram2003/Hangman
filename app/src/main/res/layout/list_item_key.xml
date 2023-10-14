@@ -5,7 +5,7 @@
     android:padding="8dp">
 
     <View
-        android:id="@+id/key_background"
+        android:id="@+id/key_bg"
         android:layout_width="35dp"
         android:layout_height="43dp"
         android:background="@drawable/character_key_available" />
