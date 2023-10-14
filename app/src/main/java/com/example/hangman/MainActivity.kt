@@ -27,10 +27,14 @@ class MainActivity : AppCompatActivity() {
         if (keyboardViewModel.keys.isEmpty()){
             generateKeys()
         }
-
         val adapter = KeyboardAdapter( keyboardViewModel.keys ){key ->
-            key.isAvailable = false
-            Toast.makeText(this, key.letter.toString(), Toast.LENGTH_SHORT).show()
+            if(key.isAvailable){
+                Toast.makeText(this, key.letter.toString(), Toast.LENGTH_SHORT).show()
+                key.isAvailable = false
+            }
+            else{
+                Toast.makeText(this, "Already guessed!", Toast.LENGTH_SHORT).show()
+            }
         }
         binding.keyboardRv?.adapter = adapter
         binding.keyboardRv?.setHasFixedSize(true)
@@ -39,14 +43,15 @@ class MainActivity : AppCompatActivity() {
         generateNewGame()
     }
 
-    fun generateKeys(){
-        var keys = mutableListOf<Key>()
+    fun generateKeys() {
+        val keys = mutableListOf<Key>()
         for (i in 0 until 26) {
             val letter = 'A' + i
             keys += Key(letter, true)
         }
         keyboardViewModel.keys = keys
     }
+
 
     fun generateNewGame(){
         correctWord = Words.gameWords[Random.nextInt(1, Words.gameWords.size)]

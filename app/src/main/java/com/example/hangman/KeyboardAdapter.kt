@@ -41,13 +41,17 @@ class KeyboardAdapter (var keys: List<Key>,val listener: (Key) -> Unit) : Recycl
     override fun onBindViewHolder(holder: KeyboardHolder, position: Int) {
         val key = keys[position]
         holder.itemView.findViewById<TextView>(R.id.key).text = key.letter.toString()
+
+        // Set the background drawable based on isAvailable status
+        if (key.isAvailable) {
+            holder.itemView.findViewById<View>(R.id.key_bg).setBackgroundResource(R.drawable.character_key_available)
+        } else {
+            holder.itemView.findViewById<View>(R.id.key_bg).setBackgroundResource(R.drawable.character_key_unavailable)
+        }
+
         holder.itemView.setOnClickListener(){
             listener(key)
-            if (key.isAvailable) {
-                holder.itemView.findViewById<View>(R.id.key_bg).setBackgroundResource(R.drawable.character_key_available)
-            } else {
-                holder.itemView.findViewById<View>(R.id.key_bg).setBackgroundResource(R.drawable.character_key_unavailable)
-            }
+            holder.itemView.findViewById<View>(R.id.key_bg).setBackgroundResource(R.drawable.character_key_unavailable)
         }
     }
 
