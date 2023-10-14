@@ -21,9 +21,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.guessedWord.text = keyboardViewModel.currentGuessedWord
+        getCurrImageState(keyboardViewModel.numTries)
+
         setContentView(binding.root)
         if (keyboardViewModel.keys.isEmpty()){
-            keyboardViewModel.keys = generateKeys()
+            generateNewGame()
         }
         val adapter = KeyboardAdapter( keyboardViewModel.keys ){key ->
             if(key.isAvailable){
@@ -37,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         binding.keyboardRv?.adapter = adapter
         binding.keyboardRv?.setHasFixedSize(true)
         binding.keyboardRv?.layoutManager = GridLayoutManager(this, 7)
-
-        generateNewGame()
     }
     fun play(char: Char){
         if(checkLetter(char)){
