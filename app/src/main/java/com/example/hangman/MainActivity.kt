@@ -8,6 +8,8 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.hangman.databinding.ActivityMainBinding
 import kotlin.random.Random
+import android.app.AlertDialog
+import android.content.Context
 
 private const val TAG = "MainActivity"
 
@@ -60,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun generateNewGame(){
+    fun generateNewGame(){
         keyboardViewModel.reset()
 
         binding.guessedWord.text = "_ _ _ _ _ _"
@@ -78,6 +80,13 @@ class MainActivity : AppCompatActivity() {
         val charArray: CharArray = keyboardViewModel.currentGuessedWord.toCharArray()
         binding.guessedWord.text = charArray.joinToString(separator = " ")
     }
+
+//    fun checkIfGameFinished(){
+//        if (keyboardViewModel.isGameFinished) {
+//            gameWonPopUpWindow(this)
+//        }
+//
+//    }
 
     fun updateLife() {
         // Update the life text field
@@ -97,4 +106,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.life?.text = text
     }
+
+//    fun gameWonPopUpWindow(context: Context) {
+//        // check if isGameFinished returns true and the number of tries is less than the maximum tries before losing
+//        if (keyboardViewModel.isGameFinished && keyboardViewModel.numTries != keyboardViewModel.maxTries) {
+//            val dialog = AlertDialog.Builder(context).create()
+//            dialog.apply {
+//                setMessage("You won!")
+//                show()
+//            }
+//        }
+//    }
 }
