@@ -28,13 +28,12 @@ class KeyboardHolder(private val binding: ListItemKeyBinding,  private val keybo
 
         binding.root.setOnClickListener {
             if (key.isAvailable && isInCorrectWord(key.letter)) {
-                keyboardViewModel.numTries++
                 keyboardViewModel.updateGuessedWord(key.letter)
                 mainActivity.updateGuessedWord()
                 invalid(key)
                 Log.d(TAG, "Current number of tries = ${keyboardViewModel.numTries}")
                 Log.d(TAG, "The correct key is clicked!")
-                if (!keyboardViewModel.currentGuessedWord.contains('_')) {
+                if (keyboardViewModel.currentGuessedWord.equals(keyboardViewModel.correctWord, true)) {
                     Log.d(TAG, "The user won the game!")
                     gameWonPopUpWindow(mainActivity)
                 }

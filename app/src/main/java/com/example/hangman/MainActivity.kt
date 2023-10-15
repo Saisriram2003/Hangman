@@ -22,11 +22,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (keyboardViewModel.keys.isEmpty()){
+            generateNewGame()
+        }
+        else{
+            val adapter = KeyboardAdapter(keyboardViewModel, this)
+            binding.keyboardRv.adapter = adapter
+            binding.keyboardRv.setHasFixedSize(true)
+            binding.keyboardRv.layoutManager = GridLayoutManager(this, 7)
+            updateLife()
+            updateGuessedWord()
+        }
 
-        generateNewGame()
+
+        Log.d(TAG,"keyboardViewModel.keys = ${keyboardViewModel.keys}")
 
         binding.restartButton.setOnClickListener {
             generateNewGame()
+            updateLife()
         }
 
         binding.hintButton.setOnClickListener {
