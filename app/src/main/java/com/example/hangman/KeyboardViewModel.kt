@@ -8,6 +8,7 @@ const val KEYS = "Keys"
 const val TRIES = "Tries"
 const val CORRECT_WORD = "CorrectWord"
 const val GUESSED_WORD = "GuessedWord"
+const val IS_GAME_FINISHED = "isGameFinished"
 
 class KeyboardViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
@@ -20,5 +21,8 @@ class KeyboardViewModel(private val savedStateHandle: SavedStateHandle) : ViewMo
     var currentGuessedWord : String get() = savedStateHandle.get(GUESSED_WORD) ?: ""
         set(value) = savedStateHandle.set(GUESSED_WORD, value)
 
+    val maxTries = 6
 
+    var isGameFinished : Boolean get() = numTries == maxTries || currentGuessedWord == correctWord
+        set(value) = savedStateHandle.set(IS_GAME_FINISHED, value)
 }

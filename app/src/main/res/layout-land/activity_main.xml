@@ -11,6 +11,7 @@
         android:id="@+id/hangmanView"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/move0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +24,6 @@
         android:text="_ _ _ _ _ _"
         android:textColor="@color/black"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/keyboard_fr"
         app:layout_constraintEnd_toStartOf="@+id/hangmanView"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/hangmanView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guessedWord" />
 
