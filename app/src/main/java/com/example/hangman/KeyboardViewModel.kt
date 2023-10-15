@@ -34,10 +34,14 @@ class KeyboardViewModel(private val savedStateHandle: SavedStateHandle) : ViewMo
     var isGameFinished : Boolean get() = numTries == maxTries || currentGuessedWord == correctWord
         set(value) = savedStateHandle.set(IS_GAME_FINISHED, value)
 
+    private fun getRandomWord(): String {
+        val randomIndex = Random.nextInt(0, Words.gameWords.size)
+        return Words.gameWords.keys.elementAt(randomIndex)
+    }
     fun reset() {
         keys = generateKeys()
         numTries = 0
-        correctWord = Words.gameWords[Random.nextInt(1, Words.gameWords.size)]
+        correctWord = getRandomWord()
         currentGuessedWord = "______"
         numHintClicks = 0
     }
@@ -76,6 +80,7 @@ class KeyboardViewModel(private val savedStateHandle: SavedStateHandle) : ViewMo
 
         for (i in correctWord.indices) {
             if (vowel.contains(correctWord[i])) {
+                // replaces the character at the i-th index of currentGuessedWord with the uppercase vowel
                 currentGuessedWord = currentGuessedWord.substring(0, i) + correctWord[i].uppercaseChar() + currentGuessedWord.substring(i + 1)
                 // disable the vowel key
                 val disableIndex = correctWord[i] - 'a'

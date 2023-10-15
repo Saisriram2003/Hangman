@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (keyboardViewModel.numHintClicks == 1) {
-                Toast.makeText(this, "Hint: word = ${keyboardViewModel.correctWord}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Hint: ${Words.gameWords[keyboardViewModel.correctWord]}", Toast.LENGTH_SHORT).show()
             } else if (keyboardViewModel.numHintClicks == 2) {
                 // cost user a turn
                 keyboardViewModel.numTries++
