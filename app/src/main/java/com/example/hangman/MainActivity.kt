@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
     fun generateNewGame(){
         keyboardViewModel.reset()
-
+        updateLife()
         binding.guessedWord.text = "_ _ _ _ _ _"
         binding.hangmanView.setImageResource(R.drawable.move0)
 
