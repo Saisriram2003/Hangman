@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             updateLife()
         }
 
-        binding.hintButton.setOnClickListener {
+        binding.hintButton?.setOnClickListener {
             keyboardViewModel.numHintClicks++
 
             if (keyboardViewModel.numTries == keyboardViewModel.maxTries - 1) {
