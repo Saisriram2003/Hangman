@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         if (keyboardViewModel.keys.isEmpty()){
             generateNewGame()
-        }
-        else{
+        } else {
             val adapter = KeyboardAdapter(keyboardViewModel, this)
             binding.keyboardRv.adapter = adapter
             binding.keyboardRv.setHasFixedSize(true)
@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
             updateLife()
             updateGuessedWord()
         }
-
 
         Log.d(TAG,"keyboardViewModel.keys = ${keyboardViewModel.keys}")
 
@@ -94,13 +93,6 @@ class MainActivity : AppCompatActivity() {
         binding.guessedWord.text = charArray.joinToString(separator = " ")
     }
 
-//    fun checkIfGameFinished(){
-//        if (keyboardViewModel.isGameFinished) {
-//            gameWonPopUpWindow(this)
-//        }
-//
-//    }
-
     fun updateLife() {
         // Update the life text field
         val remainingLife = keyboardViewModel.maxTries - keyboardViewModel.numTries
@@ -119,15 +111,4 @@ class MainActivity : AppCompatActivity() {
 
         binding.life?.text = text
     }
-
-//    fun gameWonPopUpWindow(context: Context) {
-//        // check if isGameFinished returns true and the number of tries is less than the maximum tries before losing
-//        if (keyboardViewModel.isGameFinished && keyboardViewModel.numTries != keyboardViewModel.maxTries) {
-//            val dialog = AlertDialog.Builder(context).create()
-//            dialog.apply {
-//                setMessage("You won!")
-//                show()
-//            }
-//        }
-//    }
 }
