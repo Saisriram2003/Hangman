@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         if (keyboardViewModel.keys.isEmpty()){
             generateNewGame()
         }
+
         val adapter = KeyboardAdapter( keyboardViewModel.keys ){key ->
             if(key.isAvailable){
                 play(key.letter)
@@ -37,9 +38,10 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Already guessed!", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.keyboardRv?.adapter = adapter
-        binding.keyboardRv?.setHasFixedSize(true)
-        binding.keyboardRv?.layoutManager = GridLayoutManager(this, 7)
+
+        binding.keyboardRv.adapter = adapter
+        binding.keyboardRv.setHasFixedSize(true)
+        binding.keyboardRv.layoutManager = GridLayoutManager(this, 7)
     }
     fun play(char: Char){
         if(checkLetter(char)){
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             }
             generateNewGame()
         }
-        Log.d("MainActivity","${keyboardViewModel.currentGuessedWord}")
+        Log.d("MainActivity", keyboardViewModel.currentGuessedWord)
 
     }
     fun isGameFinished(): Boolean{
@@ -98,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Already guessed!", Toast.LENGTH_SHORT).show()
             }
         }
-        binding.keyboardRv?.adapter = adapter
+        binding.keyboardRv.adapter = adapter
         Log.d("MainActivity", keyboardViewModel.correctWord)
     }
 
@@ -118,28 +120,25 @@ class MainActivity : AppCompatActivity() {
     fun checkLetter(letter: Char): Boolean{
         Log.d("MainActivity", "Letter: $letter")
         Log.d("MainActivity", "Correct Word: ${keyboardViewModel.correctWord}")
-        var newGuessedWord = ""
-        var letterFound = false
+        var newGuessedWord = keyboardViewModel.currentGuessedWord
+        var letterFound = keyboardViewModel.correctWord.contains(letter, true)
+
         for(i in keyboardViewModel.correctWord.indices){
-            Log.d("MainActivity", "Current Letter: ${keyboardViewModel.correctWord[i]}")
             if(keyboardViewModel.correctWord[i].equals(letter,true)){
-                newGuessedWord += letter
-                letterFound = true
-            }else{
-                newGuessedWord += keyboardViewModel.currentGuessedWord[i]
+                newGuessedWord = newGuessedWord.substring(0, i) + letter + newGuessedWord.substring(i + 1)
             }
         }
+
         keyboardViewModel.currentGuessedWord = newGuessedWord
         updateGuessedWord(keyboardViewModel.currentGuessedWord)
         return letterFound
     }
 
     fun updateGuessedWord(currentGuessedWord: String){
-        var guessedWordWithSpaces = ""
-        for(i in currentGuessedWord.indices){
-            guessedWordWithSpaces += currentGuessedWord[i] + " "
-        }
-        binding.guessedWord.text = guessedWordWithSpaces
+
+        val charArray: CharArray = currentGuessedWord.toCharArray()
+
+        binding.guessedWord.text = charArray.joinToString(separator = " ")
     }
 
 }
