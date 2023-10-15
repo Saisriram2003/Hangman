@@ -21,12 +21,12 @@
         android:id="@+id/guessedWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="_ _ _ _ _ _"
         android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hangmanView"
-        android:text="_ _ _ _ _ _" />
+        app:layout_constraintTop_toBottomOf="@+id/hangmanView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/keyboard_rv"
@@ -35,7 +35,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guessedWord" />
+        app:layout_constraintTop_toBottomOf="@+id/restart_button" />
+
+    <Button
+        android:id="@+id/restart_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Restart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guessedWord" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

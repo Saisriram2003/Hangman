@@ -21,13 +21,12 @@ class MainActivity : AppCompatActivity() {
 
         generateNewGame()
 
-        val adapter = KeyboardAdapter(keyboardViewModel, binding)
-        binding.keyboardRv.adapter = adapter
-        binding.keyboardRv.setHasFixedSize(true)
-        binding.keyboardRv.layoutManager = GridLayoutManager(this, 7)
+        binding.restartButton?.setOnClickListener {
+            generateNewGame()
+        }
     }
 
-    fun generateKeys(): List<Key> {
+    private fun generateKeys(): List<Key> {
         val keys = mutableListOf<Key>()
         for (i in 0 until 26) {
             val letter = 'A' + i
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         return keys
     }
 
-    fun generateNewGame(){
+    private fun generateNewGame(){
         keyboardViewModel.correctWord = Words.gameWords[Random.nextInt(1, Words.gameWords.size)]
 
         keyboardViewModel.currentGuessedWord = "______"
@@ -45,6 +44,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.guessedWord.text = "_ _ _ _ _ _"
         binding.hangmanView.setImageResource(R.drawable.move0)
+
+        val adapter = KeyboardAdapter(keyboardViewModel, binding)
+        binding.keyboardRv.adapter = adapter
+        binding.keyboardRv.setHasFixedSize(true)
+        binding.keyboardRv.layoutManager = GridLayoutManager(this, 7)
 
         Log.d(TAG, keyboardViewModel.correctWord)
     }
