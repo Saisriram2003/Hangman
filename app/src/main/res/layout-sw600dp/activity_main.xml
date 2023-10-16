@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/hangmanView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/move0"
         app:layout_constraintBottom_toTopOf="@+id/restart_button"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="_ _ _ _ _ _"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="60sp"
         app:layout_constraintEnd_toStartOf="@+id/hangmanView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/hangmanView"
         android:layout_marginTop="8dp"
+        android:textSize="30sp"
         android:text="Life: ❤️❤️❤️❤️❤❤️"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -54,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="Restart"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/keyboard_rv" />
@@ -65,10 +67,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginBottom="24dp"
         android:text="Hint"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/restart_button"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
