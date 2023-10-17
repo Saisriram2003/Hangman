@@ -7,9 +7,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.hangman.databinding.ActivityMainBinding
-import kotlin.random.Random
-import android.app.AlertDialog
-import android.content.Context
 
 private const val TAG = "MainActivity"
 
