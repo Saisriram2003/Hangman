@@ -14,7 +14,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hangman.databinding.ListItemKeyBinding
 
 private const val TAG = "KeyboardAdapter"
+class KeyboardAdapter (private val keyboardViewModel: KeyboardViewModel, private var mainActivity: MainActivity) : RecyclerView.Adapter<KeyboardHolder>() {
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KeyboardHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ListItemKeyBinding.inflate(inflater, parent, false)
+        return KeyboardHolder(binding, keyboardViewModel, mainActivity)
+    }
+
+    override fun getItemCount() = 26
+
+    override fun onBindViewHolder(holder: KeyboardHolder, position: Int) {
+        val key = keyboardViewModel.keys[position]
+        holder.bindUIFor(key)
+    }
+}
 class KeyboardHolder(private val binding: ListItemKeyBinding,  private val keyboardViewModel: KeyboardViewModel, private val mainActivity: MainActivity) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindUIFor(key: Key) {
@@ -105,18 +119,3 @@ class KeyboardHolder(private val binding: ListItemKeyBinding,  private val keybo
 }
 
 
-class KeyboardAdapter (private val keyboardViewModel: KeyboardViewModel, private var mainActivity: MainActivity) : RecyclerView.Adapter<KeyboardHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KeyboardHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = ListItemKeyBinding.inflate(inflater, parent, false)
-        return KeyboardHolder(binding, keyboardViewModel, mainActivity)
-    }
-
-    override fun getItemCount() = 26
-
-    override fun onBindViewHolder(holder: KeyboardHolder, position: Int) {
-        val key = keyboardViewModel.keys[position]
-        holder.bindUIFor(key)
-    }
-}
