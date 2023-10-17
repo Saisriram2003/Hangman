@@ -60,6 +60,26 @@ class MainActivity : AppCompatActivity() {
 
                 updateLife()
             } else if (keyboardViewModel.numHintClicks == 3) {
+                // check the empty spaces in currentGuessedWord
+                // if they are all vowels, Hint not available
+                val emptyIndices = keyboardViewModel.currentGuessedWord.indices.filter { keyboardViewModel.currentGuessedWord[it] == '_' }
+
+                var allConstant = true
+
+                val vowels = listOf('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u')
+
+                emptyIndices.forEach { index ->
+                    if (keyboardViewModel.currentGuessedWord[index] !in vowels) {
+                        allConstant = false
+                    }
+                }
+                Log.d(TAG, "emptyIndices = $emptyIndices. allVowels = $allConstant")
+
+                if (!allConstant) {
+                    Toast.makeText(this, "Hint not Available", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
                 // cost user a turn
                 keyboardViewModel.numTries++
 
