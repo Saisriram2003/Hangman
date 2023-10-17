@@ -5,7 +5,6 @@ object Words {
         "breeze" to "Wind",
         "castle" to "Building",
         "fierce" to "Aggressive",
-        "glisten" to "Shine",
         "hammer" to "Tool",
         "jungle" to "Forest",
         "kettle" to "Boil",
@@ -18,7 +17,6 @@ object Words {
         "rumble" to "Sound",
         "saddle" to "Seat",
         "tucker" to "Cloth",
-        "unicorn" to "Mythical creature",
         "vessel" to "Ship",
         "waffle" to "Breakfast",
         "yellow" to "Color"
